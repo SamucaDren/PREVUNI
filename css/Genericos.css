@@ -158,4 +158,13 @@ nav {
   .ImputIA img {
     display: none;
   }
+  .scroll-content {
+    padding: 24px 12px 12px 12px;
+  }
+  .welcome {
+    flex-direction: column;
+  }
+  .welcome button {
+    width: fit-content;
+  }
 }

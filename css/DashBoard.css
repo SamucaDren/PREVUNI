@@ -83,6 +83,14 @@
   overflow: hidden;
 }
 
+.grafContainer:hover .grafAzul {
+  transform: scale(1.03);
+}
+
+.grafContainer:hover .grafCinza {
+  background-color: var(--Azul10S);
+}
+
 .grafCinza {
   width: 10px;
   height: 100%;
@@ -198,7 +206,7 @@
   margin-bottom: 16px;
 }
 .graf_caixa {
-  width: 320px;
+  width: 400px;
 }
 
 @media (max-width: 768px) {

@@ -153,7 +153,8 @@ nav {
     font-size: 12pt;
   }
   .links_nav {
-    display: none;
+    width: 100%;
+    overflow: hidden;
   }
   .ImputIA img {
     display: none;

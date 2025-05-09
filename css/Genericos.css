@@ -116,26 +116,29 @@ nav {
 
 .ImputIA button {
   color: var(--Branco);
-  background-color: var(--Azul-principal);
+  background: linear-gradient(to right, var(--Azul-principal), var(--Azul40S));
+  background-size: 200% 100%;
+  background-position: 0% 0%;
   border: none;
   padding: 12px 32px;
   display: flex;
   flex-direction: row;
   height: fit-content;
   border-radius: 42px;
-  transition: background-color 0.3s ease;
+  transition: background-position 0.3s ease;
+  animation: pulsarAzul 1.5s infinite alternate;
 }
 
-.ImputIA button:hover {
-  animation: pulsarAzul 1s infinite alternate;
+.ImputIA:hover button {
+  animation: pulsarAzul 1.5s infinite alternate;
 }
 
 @keyframes pulsarAzul {
   from {
-    background-color: #0055ff;
+    background-position: 0% 0%;
   }
   to {
-    background-color: #3399ff;
+    background-position: 100% 0%;
   }
 }
 

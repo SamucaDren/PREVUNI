@@ -105,7 +105,7 @@ nav {
 .ImputIA input {
   background-color: transparent;
   border: none;
-  flex: 1;
+  width: 100%;
   outline: none;
 }
 
@@ -151,5 +151,11 @@ nav {
   }
   .subH1 {
     font-size: 12pt;
+  }
+  .links_nav {
+    display: none;
+  }
+  .ImputIA img {
+    display: none;
   }
 }

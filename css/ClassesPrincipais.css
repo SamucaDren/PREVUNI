@@ -132,7 +132,7 @@ input[type="text"]::placeholder {
 @media (max-width: 768px) {
   /*Propriedades*/
   body {
-    gap: 8px;
+    gap: 08px;
     padding: 12px 8px 8px 8px;
   }
 }

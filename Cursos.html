@@ -4,15 +4,9 @@
     <meta charset="UTF-8" />
     <title>PrevUni - Cursos</title>
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://font s.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="Scripts/API.js"></script>
   </head>
-
   <body>
     <nav class="linha">
       <div class="linha" style="gap: 52px">
@@ -29,168 +23,27 @@
         </div>
       </div>
     </nav>
-    <main class="playground">
-      <div class="sobreposicao_inferior"></div>
 
+    <main class="playground">
       <div class="scroll-content">
-        <header
-          class="linha welcome"
-          style="
-            justify-content: space-between;
-            width: 100%;
-            height: fit-content;
-          "
-        >
+        <header class="linha welcome" style="justify-content: space-between">
           <div class="coluna" style="--gap: 10px">
             <span class="SubH1 corAzul">Bem Vinda Prof. Camila</span>
             <h1 class="corPreta40B">Cursos</h1>
           </div>
-          <button class="botaoatualiza">Atualizar</button>
+          <button class="botaoatualiza" id="carregarUsuariosBtn">
+            Atualizar
+          </button>
         </header>
-
-        <div class="linha Endereco" style="align-items: center">
-          <img src="icons/casa.svg" alt="ÍconeHome" width="14" height="14" />
-          <span class="SubH3">></span>
-          <a class="SubH3">Cursos</a>
-        </div>
 
         <div class="dashboard coluna" style="--gap: 10px">
           <div class="ImputIA linha">
-            <img src="icons/Lupa.svg" alt="ÍconeHome" width="18" height="18" />
+            <img src="icons/Lupa.svg" width="18" height="18" />
             <input type="text" name="nome" placeholder="O que você procura?" />
             <button>Pesquisar</button>
           </div>
 
-          <div class="flex grid">
-            <div
-              class="flex QuadroCards_List coluna"
-              style="gap: 24px"
-              href="Dashboard.html"
-            >
-              <div class="linha" style="align-items: center">
-                <img src="icons/caderno.svg" height="16px" />
-                <h4 class="corPreta40B">Metodologias Ágeis</h4>
-              </div>
-              <div class="coluna" style="gap: 4px">
-                <span class="subH4 corCinza60B">Prof: Camilas Bastos</span>
-                <span class="subH4 corCinza60B">Quant: 32 Alunos</span>
-              </div>
-              <div class="linha">
-                <div class="linha cur_porcVerd" style="gap: 8px">
-                  <img
-                    src="icons/rostofeliz.svg"
-                    height="16px"
-                    style="align-items: center; justify-content: center"
-                  />
-                  <span class="cur_porcFont corCinza80B">50%</span>
-                </div>
-
-                <div class="linha cur_porcAzul" style="gap: 8px">
-                  <img
-                    src="icons/rostosememocao.svg"
-                    height="16px"
-                    style="align-items: center; justify-content: center"
-                  />
-                  <span class="cur_porcFont corCinza80B">50%</span>
-                </div>
-
-                <div class="linha cur_porcVerm" style="gap: 8px">
-                  <img
-                    src="icons/rostotriste.svg"
-                    height="16px"
-                    style="align-items: center; justify-content: center"
-                  />
-                  <span class="cur_porcFont corCinza80B">50%</span>
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="flex QuadroCards_List coluna"
-              style="gap: 24px"
-              href="Dashboard.html"
-            >
-              <div class="linha" style="align-items: center">
-                <img src="icons/caderno.svg" height="16px" />
-                <h4 class="corPreta40B">Metodologias Ágeis</h4>
-              </div>
-              <div class="coluna" style="gap: 4px">
-                <span class="subH4 corCinza60B">Prof: Camilas Bastos</span>
-                <span class="subH4 corCinza60B">Quant: 32 Alunos</span>
-              </div>
-              <div class="linha">
-                <div class="linha cur_porcVerd" style="gap: 8px">
-                  <img
-                    src="icons/rostofeliz.svg"
-                    height="16px"
-                    style="align-items: center; justify-content: center"
-                  />
-                  <span class="cur_porcFont corCinza80B">50%</span>
-                </div>
-
-                <div class="linha cur_porcAzul" style="gap: 8px">
-                  <img
-                    src="icons/rostosememocao.svg"
-                    height="16px"
-                    style="align-items: center; justify-content: center"
-                  />
-                  <span class="cur_porcFont corCinza80B">50%</span>
-                </div>
-
-                <div class="linha cur_porcVerm" style="gap: 8px">
-                  <img
-                    src="icons/rostotriste.svg"
-                    height="16px"
-                    style="align-items: center; justify-content: center"
-                  />
-                  <span class="cur_porcFont corCinza80B">50%</span>
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="flex QuadroCards_List coluna"
-              style="gap: 24px"
-              href="Dashboard.html"
-            >
-              <div class="linha" style="align-items: center">
-                <img src="icons/caderno.svg" height="16px" />
-                <h4 class="corPreta40B">Metodologias Ágeis</h4>
-              </div>
-              <div class="coluna" style="gap: 4px">
-                <span class="subH4 corCinza60B">Prof: Camilas Bastos</span>
-                <span class="subH4 corCinza60B">Quant: 32 Alunos</span>
-              </div>
-              <div class="linha">
-                <div class="linha cur_porcVerd" style="gap: 8px">
-                  <img
-                    src="icons/rostofeliz.svg"
-                    height="16px"
-                    style="align-items: center; justify-content: center"
-                  />
-                  <span class="cur_porcFont corCinza80B">50%</span>
-                </div>
-
-                <div class="linha cur_porcAzul" style="gap: 8px">
-                  <img
-                    src="icons/rostosememocao.svg"
-                    height="16px"
-                    style="align-items: center; justify-content: center"
-                  />
-                  <span class="cur_porcFont corCinza80B">50%</span>
-                </div>
-
-                <div class="linha cur_porcVerm" style="gap: 8px">
-                  <img
-                    src="icons/rostotriste.svg"
-                    height="16px"
-                    style="align-items: center; justify-content: center"
-                  />
-                  <span class="cur_porcFont corCinza80B">50%</span>
-                </div>
-              </div>
-            </div>
-
+          <div class="flex grid" id="us_cont">
             <div
               class="flex QuadroCards_List coluna"
               style="gap: 24px"

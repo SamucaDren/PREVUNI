@@ -14,15 +14,23 @@ async function getToken() {
     });
 
     const data = await response.json();
-    console.log(data); // <-- Veja aqui o que a API retorna
+    console.log(
+      "getToken → status:",
+      response.status,
+      "ok?",
+      response.ok,
+      data
+    );
 
     if (!response.ok) {
-      throw new Error(data.message || "Erro na requisição");
+      console.error("Erro na requisição de token:", data);
+      return null;
     }
 
     return data.access_token;
   } catch (error) {
     console.error("Erro ao obter token:", error.message);
+    return null;
   }
 }
 
@@ -37,14 +45,25 @@ async function listarUsuarios(token) {
       },
     });
 
+    console.log(
+      "listarUsuarios → status:",
+      response.status,
+      "ok?",
+      response.ok
+    );
+
     if (response.ok) {
       return await response.json();
     } else {
-      console.error("Erro ao listar usuários:", response.statusText);
+      console.error(
+        "Erro ao listar usuários:",
+        response.status,
+        response.statusText
+      );
       return [];
     }
   } catch (error) {
-    console.error("Erro ao listar usuários:", error);
+    console.error("Erro ao listar usuários:", error.message);
     return [];
   }
 }
@@ -57,50 +76,51 @@ async function carregarUsuarios() {
   const token = await getToken();
 
   if (!token) {
-    container.innerHTML = "Erro ao obter token. Verifique suas credenciais.";
+    container.textContent =
+      "Erro ao obter token. Verifique console para mais detalhes.";
     return;
   }
 
   // Listar usuários
   const usuarios = await listarUsuarios(token);
 
-  if (usuarios.length === 0) {
-    container.innerHTML = "Nenhum usuário encontrado.";
+  if (!usuarios || usuarios.length === 0) {
+    container.textContent = "Nenhum usuário encontrado.";
     return;
   }
 
-  container.innerHTML = ""; // Limpar qualquer conteúdo anterior
+  container.innerHTML = ""; // Limpar conteúdo anterior
 
   usuarios.forEach((user) => {
-    // Criar os elementos HTML para cada usuário
     const div = document.createElement("div");
     div.className = "flex QuadroCards_List coluna";
     div.style.gap = "24px";
 
     div.innerHTML = `
-          <div class="linha" style="align-items: center">
-            <img src="icons/caderno.svg" height="16px" />
-            <h4 class="corPreta40B">${user.name}</h4>
-          </div>
-          <div class="coluna" style="gap: 4px">
-            <span class="subH4 corCinza60B">Prof: ${user.user_id}</span>
-            <span class="subH4 corCinza60B">Último Acesso: ${user.user_lastaccess}</span>
-          </div>
-          <div class="linha">
-            <div class="linha cur_porcVerd" style="gap: 8px">
-              <img src="icons/rostofeliz.svg" height="16px" />
-              <span class="cur_porcFont corCinza80B">50%</span>
-            </div>
-            <div class="linha cur_porcAzul" style="gap: 8px">
-              <img src="icons/rostosememocao.svg" height="16px" />
-              <span class="cur_porcFont corCinza80B">50%</span>
-            </div>
-            <div class="linha cur_porcVerm" style="gap: 8px">
-              <img src="icons/rostotriste.svg" height="16px" />
-              <span class="cur_porcFont corCinza80B">50%</span>
-            </div>
-          </div>
-        `;
+      <div class="linha" style="align-items: center">
+        <img src="icons/caderno.svg" height="16px" />
+        <h4 class="corPreta40B">${user.name}</h4>
+      </div>
+      <div class="coluna" style="gap: 4px">
+        <span class="subH4 corCinza60B">Prof: ${user.user_id}</span>
+        <span class="subH4 corCinza60B">Último Acesso: ${user.user_lastaccess}</span>
+      </div>
+      <div class="linha">
+        <div class="linha cur_porcVerd" style="gap: 8px">
+          <img src="icons/rostofeliz.svg" height="16px" />
+          <span class="cur_porcFont corCinza80B">50%</span>
+        </div>
+        <div class="linha cur_porcAzul" style="gap: 8px">
+          <img src="icons/rostosememocao.svg" height="16px" />
+          <span class="cur_porcFont corCinza80B">50%</span>
+        </div>
+        <div class="linha cur_porcVerm" style="gap: 8px">
+          <img src="icons/rostotriste.svg" height="16px" />
+          <span class="cur_porcFont corCinza80B">50%</span>
+        </div>
+      </div>
+    `;
+
     container.appendChild(div);
   });
 }
